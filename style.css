@@ -1,1 +1,380 @@
-/* Add your CSS here */
+/* Set a tech-themed animated background for the whole page */
+body {
+  /* Intel blue gradient background */
+  background: linear-gradient(120deg, #003366 0%, #0068b5 100%);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* Add space for the animated SVG lines */
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Tech-themed animated circuit lines using a pseudo-element */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* SVG background with animated lines and dots */
+  background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg"><g opacity="0.13"><rect x="200" y="100" width="1520" height="880" rx="40" stroke="%2300ffe7" stroke-width="2" stroke-dasharray="12 8"/><line x1="400" y1="100" x2="400" y2="980" stroke="%2300aaff" stroke-width="2" stroke-dasharray="8 8"/><line x1="1520" y1="100" x2="1520" y2="980" stroke="%2300aaff" stroke-width="2" stroke-dasharray="8 8"/><circle cx="400" cy="100" r="8" fill="%2300ffe7"/><circle cx="1520" cy="980" r="8" fill="%2300ffe7"/><circle cx="960" cy="540" r="6" fill="%2300aaff"/></g></svg>');
+  background-size: cover;
+  animation: bgMove 12s linear infinite alternate;
+}
+
+/* Animation to slowly move the SVG background for a techy effect */
+@keyframes bgMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 10% 10%; }
+}
+
+/* Header styles */
+header {
+  background: #0068b5; /* Intel blue */
+  color: white;
+  padding: 30px 0 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  /* Subtle fade-in animation */
+  animation: fadeInDown 1.2s;
+  position: relative;
+  z-index: 1; /* Make sure header is above background */
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-40px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.header-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Intel logo style */
+.intel-logo {
+  width: 120px;
+  display: block;
+  margin: 0 auto 10px auto;
+  filter: drop-shadow(0 0 8px #00aaff88);
+  animation: logoPulse 2s infinite alternate;
+}
+
+/* Logo subtle glowing animation */
+@keyframes logoPulse {
+  0% { filter: drop-shadow(0 0 8px #00aaff88);}
+  100% { filter: drop-shadow(0 0 18px #00ffe788);}
+}
+
+/* Main heading style */
+header h1 {
+  font-size: 2.2em;
+  margin: 10px 0 10px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #00508033;
+}
+
+/* Subheading style */
+header p {
+  font-size: 1.1em;
+  margin: 0 0 10px 0;
+  text-shadow: 0 1px 4px #00508022;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+  background: #002d6e; /* Dark Intel blue */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-bottom: 2px solid #00aaff;
+  animation: nav-glow 2s infinite alternate;
+}
+
+/* Logo in navbar */
+.nav-logo {
+  width: 90px;
+  height: auto;
+  margin-right: 10px;
+  filter: drop-shadow(0 0 6px #00aaff88);
+}
+
+/* Navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  transition: max-height 0.4s;
+}
+
+/* Each link */
+.nav-links li {
+  margin: 0 12px;
+  position: relative;
+}
+
+/* Link style */
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+  /* Techy underline animation */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated underline on hover */
+.nav-links a::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, #00aaff, #00ffe7);
+  border-radius: 2px;
+  transition: width 0.4s;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+}
+
+.nav-links a:hover {
+  background: #00aaff33;
+  color: #00ffe7;
+  box-shadow: 0 0 8px #00aaff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger menu for mobile */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-toggle span {
+  height: 4px;
+  width: 26px;
+  background: #fff;
+  margin: 3px 0;
+  border-radius: 2px;
+  display: block;
+  transition: 0.4s;
+}
+
+/* Hamburger animation when open */
+.nav-toggle.toggle span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav-toggle.toggle span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.toggle span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Responsive Navbar */
+@media (max-width: 700px) {
+  .nav-links {
+    flex-direction: column;
+    background: #002d6e;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom: 2px solid #00aaff;
+  }
+  .nav-links.nav-active {
+    max-height: 300px;
+    transition: max-height 0.4s;
+  }
+  .nav-links li {
+    margin: 18px 0;
+    text-align: center;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+/* Techy animated border for navbar */
+@keyframes nav-glow {
+  0% { border-bottom-color: #00aaff; }
+  100% { border-bottom-color: #00ffe7; }
+}
+
+/* Timeline section styles */
+.timeline-section {
+  margin: 40px 0 0 0;
+  padding: 0 0 30px 0;
+  background: #eaf1fb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* Horizontal scroll container */
+.timeline-cards {
+  display: flex; /* Arrange cards in a row */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 24px; /* Space between cards */
+  padding: 30px 20px 20px 20px;
+  scroll-behavior: smooth; /* Smooth scroll */
+  scrollbar-width: thin;
+  scrollbar-color: #0068b5 #eaf1fb;
+}
+
+/* Timeline card styles */
+.timeline-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,104,181,0.10);
+  min-width: 260px;
+  max-width: 260px;
+  padding: 18px 16px 16px 16px;
+  flex: 0 0 auto; /* Prevent shrinking */
+  transition: transform 0.4s, box-shadow 0.4s;
+  position: relative;
+  /* Card slide-in animation */
+  opacity: 0;
+  transform: translateY(40px);
+  animation: cardFadeIn 1s forwards;
+  animation-delay: 0.3s;
+}
+
+/* Animate each card with a slight delay for a "wave" effect */
+.timeline-card:nth-child(1) { animation-delay: 0.3s;}
+.timeline-card:nth-child(2) { animation-delay: 0.5s;}
+.timeline-card:nth-child(3) { animation-delay: 0.7s;}
+.timeline-card:nth-child(4) { animation-delay: 0.9s;}
+.timeline-card:nth-child(5) { animation-delay: 1.1s;}
+.timeline-card:nth-child(6) { animation-delay: 1.3s;}
+.timeline-card:nth-child(7) { animation-delay: 1.5s;}
+.timeline-card:nth-child(8) { animation-delay: 1.7s;}
+.timeline-card:nth-child(9) { animation-delay: 1.9s;}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card hover effect for animation */
+.timeline-card:hover {
+  transform: translateY(-12px) scale(1.04) rotate(-2deg);
+  box-shadow: 0 8px 32px #00aaff55;
+  z-index: 2;
+  border: 2px solid #00aaff;
+}
+
+/* Card image style */
+.timeline-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 12px #00aaff22;
+  transition: box-shadow 0.3s;
+}
+
+.timeline-card:hover img {
+  box-shadow: 0 4px 24px #00ffe744;
+}
+
+/* Card headings */
+.timeline-card h2 {
+  color: #0068b5;
+  font-size: 1.1em;
+  margin: 0 0 4px 0;
+}
+
+.timeline-card h3 {
+  font-size: 1.2em;
+  margin: 0 0 8px 0;
+}
+
+/* Card text */
+.timeline-card p {
+  font-size: 0.98em;
+  color: #222;
+}
+
+/* Timeline instruction text */
+.timeline-instruction {
+  text-align: center;
+  color: #0068b5;
+  font-size: 1em;
+  margin-top: 18px;
+  animation: fadeInDown 1.5s;
+}
+
+/* Make horizontal scroll look cool on hover */
+.timeline-cards:active,
+.timeline-cards:focus-within {
+  cursor: grabbing;
+}
+
+/* Dot that follows the cursor */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background: #00aaff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 16px #00aaff88, 0 0 32px #00aaff44;
+  transition: background 0.2s, box-shadow 0.2s;
+  /* Glowing animation for the dot */
+  animation: dotGlow 1.2s infinite alternate;
+}
+
+@keyframes dotGlow {
+  0% { box-shadow: 0 0 8px #00aaff88, 0 0 16px #00aaff44;}
+  100% { box-shadow: 0 0 24px #00ffe788, 0 0 48px #00ffe744;}
+}
+
+/* Make the dot smaller on mobile for better UX */
+@media (max-width: 700px) {
+  .cursor-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Responsive: stack cards vertically on small screens */
+@media (max-width: 600px) {
+  .timeline-cards {
+    flex-direction: column;
+    gap: 18px;
+    overflow-x: visible;
+  }
+  .timeline-card {
+    max-width: 98vw;
+    min-width: 0;
+    margin: 0 auto;
+  }
+}
